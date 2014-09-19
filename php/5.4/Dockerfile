@@ -7,8 +7,25 @@ RUN echo "deb http://old-releases.ubuntu.com/ubuntu raring universe main multive
 RUN echo "deb http://old-releases.ubuntu.com/ubuntu/ raring-security universe main multiverse restricted" >> /etc/apt/sources.list
 RUN apt-get update
 
-RUN apt-get -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" install php5 php5-mysql php5-gd php5-mcrypt php5-curl libapache2-mod-php5 sendmail php5-xdebug
-RUN rm /etc/php5/conf.d/20-xdebug.ini
-ADD ./ext-xdebug.ini /etc/php5/conf.d/20-xdebug.ini
+RUN apt-get -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" install php5 php5-mysql php5-gd php5-mcrypt php5-curl libapache2-mod-php5
 
-EXPOSE 80
+RUN rm /etc/php5/apache2/php.ini
+RUN rm /etc/php5/cli/php.ini
+ADD ./php.ini /etc/php5/apache2/php.ini
+ADD ./php.ini /etc/php5/cli/php.ini
+
+RUN apt-get -y install php5-xdebug
+RUN echo "xdebug.remote_enable=on" >> /etc/php5/conf.d/20-xdebug.ini
+RUN echo "xdebug.remote_connect_back=1" >> /etc/php5/conf.d/20-xdebug.ini
+RUN echo "xdebug.remote_port=9010" >> /etc/php5/conf.d/20-xdebug.ini
+
+RUN apt-get -y install ruby ruby-dev build-essential libsqlite3-dev
+RUN gem install mailcatcher
+
+EXPOSE 80 1080
+
+ADD ./init.sh /init.sh
+RUN chmod +x /init.sh
+ENTRYPOINT ["/init.sh"]
+
+CMD ["/usr/bin/supervisord"]
