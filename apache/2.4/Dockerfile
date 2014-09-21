@@ -18,7 +18,7 @@ RUN echo "command=/bin/bash -c \"source /etc/apache2/envvars && exec /usr/sbin/a
 
 RUN if test -d /var/www; then rm -rf /var/www; fi
 
-ADD ./default.conf /etc/apache2/sites-available/default
+ADD ./default.conf /etc/apache2/sites-available/000-default.conf
 
 EXPOSE 80
 
