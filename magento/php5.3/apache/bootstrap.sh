@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+portLinkedTo80=$(docker ps -a | grep magento_web_1 | grep -o -P "[0-9]+\->80" | tr "\->" "\n" | head -n 1)
+baseUrl="http://127.0.0.1:${portLinkedTo80}/"
+
 magentoRootDir=/var/www
 localXml="${magentoRootDir}/app/etc/local.xml"
 
