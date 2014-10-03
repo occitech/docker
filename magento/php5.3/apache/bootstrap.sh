@@ -3,15 +3,20 @@
 magentoRootDir=/var/www
 localXml="${magentoRootDir}/app/etc/local.xml"
 
-if test -f $localXml; then
-  rm $localXml
+if test -f ${localXml}; then
+  rm ${localXml}
+
+  /usr/bin/n98-magerun --root-dir=${magentoRootDir} local-config:generate ${!MAGENTO_DATABASE_IP_ADDR_ENV} root root magento files ${MAGENTO_ADMIN_NAME} >/dev/null 2>&1
+  /usr/bin/n98-magerun --root-dir=${magentoRootDir} config:set web/unsecure/base_url ${baseUrl} >/dev/null 2>&1
+  /usr/bin/n98-magerun --root-dir=${magentoRootDir} config:set web/secure/base_url ${baseUrl} >/dev/null 2>&1
+else
+  /usr/bin/n98-magerun install --installationFolder=${magentoRootDir} --noDownload --dbHost=${!MAGENTO_DATABASE_IP_ADDR_ENV} --dbUser=root --dbPass=root --dbPort=3306 --dbName=magento --baseUrl=${baseUrl} >/dev/null 2>&1
+
+  rm ${localXml}
+
+  /usr/bin/n98-magerun --root-dir=${magentoRootDir} local-config:generate ${!MAGENTO_DATABASE_IP_ADDR_ENV} root root magento files ${MAGENTO_ADMIN_NAME} >/dev/null 2>&1
+  /usr/bin/n98-magerun --root-dir=${magentoRootDir} cache:clean >/dev/null 2>&1
+  /usr/bin/n98-magerun --root-dir=${magentoRootDir} cache:flush >/dev/null 2>&1
 fi
-
-/usr/bin/n98-magerun --root-dir=${magentoRootDir} local-config:generate ${MPSEC_DB_1_PORT_3306_TCP_ADDR} root root magento files admin >/dev/null 2>&1
-
-portLinkedTo80=$(docker ps -a | grep mpsec_web_1 | grep -o -P "[0-9]+\->80" | tr "\->" "\n" | head -n 1)
-baseUrl="http://127.0.0.1:${portLinkedTo80}/"
-/usr/bin/n98-magerun --root-dir=${magentoRootDir} config:set web/unsecure/base_url ${baseUrl} >/dev/null 2>&1
-/usr/bin/n98-magerun --root-dir=${magentoRootDir} config:set web/secure/base_url ${baseUrl} >/dev/null 2>&1
 
 sh /init.sh "$@"
