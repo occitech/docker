@@ -1,5 +1,6 @@
 FROM ubuntu:utopic
-MAINTAINER chadrien <chadrien@chadrien.fr>
+
+MAINTAINER occitech <contact@occitech.fr>
 
 ENV DEBIAN_FRONTEND noninteractive
 

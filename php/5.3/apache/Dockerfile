@@ -1,5 +1,6 @@
 FROM occitech/apache:2.2
-MAINTAINER chadrien <chadrien@chadrien.fr>
+
+MAINTAINER occitech <contact@occitech.fr>
 
 ENV DEBIAN_FRONTEND noninteractive
 
