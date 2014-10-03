@@ -1,4 +1,4 @@
-FROM chadrien/apache24
+FROM occitech/apache:2.4
 MAINTAINER chadrien <chadrien@chadrien.fr>
 
 ENV DEBIAN_FRONTEND noninteractive
