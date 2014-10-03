@@ -1,4 +1,4 @@
-FROM occitech/occitech/php:5.5-apache
+FROM occitech/php:5.5-apache
 
 MAINTAINER occitech <contact@occitech.fr>
 
