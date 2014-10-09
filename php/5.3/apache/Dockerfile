@@ -4,33 +4,21 @@ MAINTAINER occitech <contact@occitech.fr>
 
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN echo "deb http://archive.ubuntu.com/ubuntu precise universe main multiverse restricted" > /etc/apt/sources.list
-RUN echo "deb http://archive.ubuntu.com/ubuntu/ precise-security universe main multiverse restricted" >> /etc/apt/sources.list
-RUN apt-get update
+RUN echo "deb http://archive.ubuntu.com/ubuntu precise universe main multiverse restricted" > /etc/apt/sources.list && echo "deb http://archive.ubuntu.com/ubuntu/ precise-security universe main multiverse restricted" >> /etc/apt/sources.list && apt-get update
 
 RUN apt-get -y install php5 php5-mysql php5-gd php5-mcrypt php5-curl libapache2-mod-php5
 
-RUN rm /etc/php5/apache2/php.ini
-RUN rm /etc/php5/cli/php.ini
 ADD ./php.ini /etc/php5/apache2/php.ini
 ADD ./php.ini /etc/php5/cli/php.ini
 
 RUN apt-get -y install php5-xdebug
-RUN echo "xdebug.remote_enable=on" >> /etc/php5/conf.d/20-xdebug.ini
-RUN echo "xdebug.remote_connect_back=1" >> /etc/php5/conf.d/20-xdebug.ini
-RUN echo "xdebug.remote_port=9010" >> /etc/php5/conf.d/20-xdebug.ini
+RUN echo "xdebug.remote_enable=on" >> /etc/php5/conf.d/20-xdebug.ini && echo "xdebug.remote_connect_back=1" >> /etc/php5/conf.d/20-xdebug.ini && echo "xdebug.remote_port=9010" >> /etc/php5/conf.d/20-xdebug.ini
 
-RUN echo "deb http://old-releases.ubuntu.com/ubuntu raring universe main multiverse restricted" > /etc/apt/sources.list
-RUN echo "deb http://old-releases.ubuntu.com/ubuntu/ raring-security universe main multiverse restricted" >> /etc/apt/sources.list
-RUN apt-get update
+VOLUME ["/etc/php5/"]
 
-RUN apt-get -y install ruby ruby-dev build-essential libsqlite3-dev
-RUN gem install mailcatcher
-
-EXPOSE 80 1080
+RUN apt-get clean
 
 ADD ./init.sh /init.sh
-RUN chmod +x /init.sh
 ENTRYPOINT ["/init.sh"]
 
-CMD ["/usr/bin/supervisord"]
+CMD ["/usr/sbin/apache2", "-D", "FOREGROUND"]
