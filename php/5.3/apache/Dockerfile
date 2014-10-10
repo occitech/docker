@@ -8,9 +8,6 @@ RUN echo "deb http://archive.ubuntu.com/ubuntu precise universe main multiverse 
 
 RUN apt-get -y install php5 php5-mysql php5-gd php5-mcrypt php5-curl libapache2-mod-php5
 
-ADD ./php.ini /etc/php5/apache2/php.ini
-ADD ./php.ini /etc/php5/cli/php.ini
-
 RUN apt-get -y install php5-xdebug
 RUN echo "xdebug.remote_enable=on" >> /etc/php5/conf.d/20-xdebug.ini && echo "xdebug.remote_connect_back=1" >> /etc/php5/conf.d/20-xdebug.ini && echo "xdebug.remote_port=9010" >> /etc/php5/conf.d/20-xdebug.ini
 
