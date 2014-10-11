@@ -7,3 +7,5 @@ RUN apt-get -y install curl && curl -o /usr/bin/n98-magerun https://raw.githubus
 RUN apt-get clean
 
 ADD ./default.conf /etc/apache2/sites-available/default
+
+ADD ./bin/set-base-url /usr/local/bin/set-base-url
