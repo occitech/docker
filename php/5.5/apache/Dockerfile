@@ -15,8 +15,3 @@ RUN echo "xdebug.remote_enable=on" >> /etc/php5/mods-available/20-xdebug.ini && 
 VOLUME ["/etc/php5/"]
 
 RUN apt-get clean
-
-ADD ./init.sh /init.sh
-ENTRYPOINT ["/init.sh"]
-
-CMD ["/usr/sbin/apache2", "-D", "FOREGROUND"]
