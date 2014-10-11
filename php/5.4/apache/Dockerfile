@@ -6,7 +6,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 RUN echo "deb http://old-releases.ubuntu.com/ubuntu raring universe main multiverse restricted" > /etc/apt/sources.list && echo "deb http://old-releases.ubuntu.com/ubuntu/ raring-security universe main multiverse restricted" >> /etc/apt/sources.list && apt-get update
 
-RUN apt-get -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" install php5 php5-mysql php5-gd php5-mcrypt php5-curl libapache2-mod-php5
+RUN apt-get -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" install php5 php5-cli libapache2-mod-php5
 
 RUN apt-get -y install php5-xdebug
 RUN echo "xdebug.remote_enable=on" >> /etc/php5/conf.d/20-xdebug.ini && echo "xdebug.remote_connect_back=1" >> /etc/php5/conf.d/20-xdebug.ini && echo "xdebug.remote_port=9010" >> /etc/php5/conf.d/20-xdebug.ini

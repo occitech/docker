@@ -2,6 +2,7 @@ FROM occitech/php:5.3-apache
 
 MAINTAINER occitech <contact@occitech.fr>
 
+RUN apt-get -y install php5-mysql php5-gd php5-mcrypt php5-curl
 RUN apt-get -y install curl
 RUN curl -sSL https://get.docker.io/ubuntu/ | sh
 
