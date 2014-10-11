@@ -20,6 +20,8 @@ VOLUME ["/var/www"]
 VOLUME ["/etc/apache2/"]
 VOLUME ["/var/log/apache2"]
 
+WORKDIR /var/www
+
 ADD ./default.conf /etc/apache2/sites-available/000-default.conf
 
 EXPOSE 80
