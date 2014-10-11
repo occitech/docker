@@ -27,5 +27,5 @@ Send your Magento sources to `/var/www/htdocs` with a volume.
 
 ```bash
 $ docker run --rm occitech/magento:php5.5-apache set-base-url $(docker port $RUNNING_CONTAINER_ID_OR_NAME 80 | sed s/0.0.0.0://) # Only specifying a port for http://127.0.0.1:$PORT/
-$ docker run --rm occitech/magento:php5.5-apache set-base-url -c http://my-custom-url/ # -u option for a custom url
+$ docker run --rm occitech/magento:php5.5-apache set-base-url -c http://my-custom-url/ # -c option for a custom url
 ```
