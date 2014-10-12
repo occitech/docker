@@ -17,7 +17,6 @@ ENV APACHE_PID_FILE apache2.pid
 RUN mv /var/www/html/* /var/www && rmdir /var/www/html
 
 VOLUME ["/var/www"]
-VOLUME ["/etc/apache2/"]
 VOLUME ["/var/log/apache2"]
 
 WORKDIR /var/www
