@@ -11,6 +11,4 @@ RUN apt-get -y install php5 php5-cli libapache2-mod-php5
 RUN apt-get -y install php5-xdebug
 RUN echo "xdebug.remote_enable=on" >> /etc/php5/conf.d/20-xdebug.ini && echo "xdebug.remote_connect_back=1" >> /etc/php5/conf.d/20-xdebug.ini && echo "xdebug.remote_port=9010" >> /etc/php5/conf.d/20-xdebug.ini
 
-VOLUME ["/etc/php5/"]
-
 RUN apt-get clean
