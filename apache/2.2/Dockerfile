@@ -12,7 +12,6 @@ ENV APACHE_RUN_GROUP www-data
 ENV APACHE_LOG_DIR /var/log/apache2
 
 VOLUME ["/var/www"]
-VOLUME ["/etc/apache2/"]
 VOLUME ["/var/log/apache2"]
 
 WORKDIR /var/www
