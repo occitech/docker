@@ -1,20 +1,14 @@
 # Magento images
 
-## Available tags
+## Supported tags and respective Dockerfile links
 
-The repo name is `occitech/magento`. Bellow you can find the existing
-sets and their corresponding tags
-
-- PHP 5.3
-  - Apache 2.2 (_tag `php5.3-apache`_)
-- PHP 5.4
-  - Apache 2.2 (_tag `php5.4-apache`_)
-- PHP 5.5
-  - Apache 2.4 (_tag `php5.5-apache`_)
+- `php5.3-apache` (_[php5.3/apache/Dockerfile](https://github.com/occitech/docker/blob/master/magento/php5.3/apache/Dockerfile)_)
+- `php5.4-apache` (_[php5.4/apache/Dockerfile](https://github.com/occitech/docker/blob/master/magento/php5.4/apache/Dockerfile)_)
+- `php5.5-apache` (_[php5.5/apache/Dockerfile](https://github.com/occitech/docker/blob/master/magento/php5.5/apache/Dockerfile)_)
 
 ## How to use
 
-Send your Magento sources to `/var/www/htdocs` with a volume.
+Send your Magento sources to `/var/www/html` with a volume, or a `COPY`.
 
 ## Features
 
