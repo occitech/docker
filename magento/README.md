@@ -1,6 +1,6 @@
-# Magento images
+# Docker images for Magento
 
-## Supported tags and respective Dockerfile links
+## Supported tags and respective `Dockerfile` links
 
 - `php5.3-apache` (_[php5.3/apache/Dockerfile](https://github.com/occitech/docker/blob/master/magento/php5.3/apache/Dockerfile)_)
 - `php5.4-apache` (_[php5.4/apache/Dockerfile](https://github.com/occitech/docker/blob/master/magento/php5.4/apache/Dockerfile)_)
