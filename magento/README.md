@@ -8,7 +8,7 @@
 
 ## How to use
 
-Send your Magento sources to `/var/www/html` with a volume, or a `COPY`.
+Send your Magento sources to `/var/www/htdocs` with a volume, or a `COPY`.
 
 ## Features
 
