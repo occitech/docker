@@ -10,8 +10,11 @@ RUN requirements="libmcrypt-dev g++ libicu-dev" \
     && requirementsToRemove="g++" \
     && apt-get purge --auto-remove -y $requirementsToRemove
 
-RUN sed -i -e 's/listen.*/listen = 0.0.0.0:9000/' /usr/local/etc/php-fpm.conf \
-    && echo 'env[DB_ENV_MYSQL_ROOT_PASSWORD] = $DB_ENV_MYSQL_ROOT_PASSWORD' >> /usr/local/etc/php-fpm.conf \
-    && echo 'env[DB_ENV_MYSQL_DATABASE] = $DB_ENV_MYSQL_DATABASE' >> /usr/local/etc/php-fpm.conf
+RUN sed -i -e 's/listen.*/listen = 0.0.0.0:9000/' /usr/local/etc/php-fpm.conf
 
 RUN usermod -u 1000 www-data
+
+COPY docker-entrypoint.sh /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
+
+CMD ["php-fpm"]
