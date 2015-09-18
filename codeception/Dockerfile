@@ -10,4 +10,5 @@ COPY php.ini /usr/local/etc/php/
 
 WORKDIR /tests
 
-CMD ["codecept", "--help"]
+ENTRYPOINT ["codecept"]
+CMD ["--help"]
