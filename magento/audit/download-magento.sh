@@ -11,10 +11,13 @@ fi
 
 MAGE_VERSION=$1
 DEST=$2
-MAGE_URL=http://www.magentocommerce.com/downloads/assets/$MAGE_VERSION/magento-$MAGE_VERSION.tar.gz
+MAGE_URL=https://github.com/bragento/magento-core/archive/${MAGE_VERSION}.zip
 
 echo "Downloading Magento " $MAGE_VERSION
 echo $MAGE_URL
 
-mkdir -p $DEST \
-    && wget -qO- $MAGE_URL | tar -zxf- -C $DEST --strip=1 magento
+if [ ! -e ${DEST} ]
+then
+  wget --no-check-certificate $MAGE_URL \
+    && unzip -q ${MAGE_VERSION}.zip && rm -rf ${MAGE_VERSION}.zip && mv magento-core-${MAGE_VERSION} $DEST
+fi
