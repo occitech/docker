@@ -13,3 +13,5 @@ RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/* \
 COPY ./default.conf /etc/apache2/sites-available/default
 
 COPY ./bin/set-base-url /usr/local/bin/set-base-url
+
+WORKDIR /var/www/htdocs
