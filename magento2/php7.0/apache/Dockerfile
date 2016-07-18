@@ -1,4 +1,5 @@
-FROM php:7.0.7-apache
+FROM php:7.0.8-apache
+MAINTAINER Occitech <contact@occitech.fr>
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
@@ -22,6 +23,8 @@ RUN apt-get update \
 
 RUN a2enmod rewrite
 RUN a2enmod headers
+
+COPY vhost.conf /etc/apache2/sites-enabled/vhost.conf
 
 VOLUME /magento
 WORKDIR /magento
