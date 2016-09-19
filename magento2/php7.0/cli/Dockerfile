@@ -22,3 +22,6 @@ RUN apt-get update \
   && rm -rf /var/lib/apt/lists/*
 
 COPY php.ini /usr/local/etc/php/
+
+VOLUME /magento
+WORKDIR /magento
