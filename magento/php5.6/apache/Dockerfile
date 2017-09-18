@@ -2,13 +2,13 @@ FROM php:5.6-apache
 MAINTAINER occitech <contact@occitech.fr>
 
 ENV N98_MAGERUN_VERSION 1.98.0
-ENV N98_MAGERUN_URL https://raw.githubusercontent.com/netz98/n98-magerun/$N98_MAGERUN_VERSION/n98-magerun.phar
+ENV N98_MAGERUN_URL https://files.magerun.net/n98-magerun.phar
 
 ENV PHP_INI_DIR /usr/local/etc/php
 ENV APACHE_LOG_DIR ../../var/log/apache2
 
-RUN curl -o /usr/local/bin/n98-magerun $N98_MAGERUN_URL \
-    && chmod +x /usr/local/bin/n98-magerun
+RUN curl $N98_MAGERUN_URL > /usr/local/bin/n98-magerun \
+    && chmod +x /usr/local/bin/n98-magerun 
 
 RUN requirements="libpng12-dev libmcrypt-dev libmcrypt4 libcurl3-dev libfreetype6 libjpeg62-turbo libpng12-dev libfreetype6-dev libjpeg62-turbo-dev mysql-client" \
     && apt-get update && apt-get install -y $requirements && rm -rf /var/lib/apt/lists/* \
