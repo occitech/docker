@@ -5,6 +5,7 @@
 - `php5.3-apache` (_[php5.3/apache/Dockerfile](https://github.com/occitech/docker/blob/master/magento/php5.3/apache/Dockerfile)_)
 - `php5.4-apache` (_[php5.4/apache/Dockerfile](https://github.com/occitech/docker/blob/master/magento/php5.4/apache/Dockerfile)_)
 - `php5.5-apache` (_[php5.5/apache/Dockerfile](https://github.com/occitech/docker/blob/master/magento/php5.5/apache/Dockerfile)_)
+- `php5.6-apache` (_[php5.6/apache/Dockerfile](https://github.com/occitech/docker/blob/master/magento/php5.6/apache/Dockerfile)_)
 - `php7.0.0-apache` (_[php7.0.0/apache/Dockerfile](https://github.com/occitech/docker/blob/master/magento/php7.0.0/apache/Dockerfile)_)
 - `php7.0.13-apache` (_[php7.0.13/apache/Dockerfile](https://github.com/occitech/docker/blob/master/magento/php7.0.13/apache/Dockerfile)_)
 - `php7.1.0-apache` (_[php7.1.0/apache/Dockerfile](https://github.com/occitech/docker/blob/master/magento/php7.1.0/apache/Dockerfile)_)
