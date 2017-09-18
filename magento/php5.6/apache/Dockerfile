@@ -4,6 +4,9 @@ MAINTAINER occitech <contact@occitech.fr>
 ENV N98_MAGERUN_VERSION 1.98.0
 ENV N98_MAGERUN_URL https://raw.githubusercontent.com/netz98/n98-magerun/$N98_MAGERUN_VERSION/n98-magerun.phar
 
+ENV PHP_INI_DIR /usr/local/etc/php
+ENV APACHE_LOG_DIR ../../var/log/apache2
+
 RUN curl -o /usr/local/bin/n98-magerun $N98_MAGERUN_URL \
     && chmod +x /usr/local/bin/n98-magerun
 
