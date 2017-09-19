@@ -4,7 +4,7 @@ MAINTAINER occitech <contact@occitech.fr>
 ENV N98_MAGERUN_VERSION 1.96.1
 ENV N98_MAGERUN_URL https://raw.githubusercontent.com/netz98/n98-magerun/$N98_MAGERUN_VERSION/n98-magerun.phar
 
-RUN apt-get -y install php5-mysql php5-gd php5-mcrypt php5-curl
+RUN apt-get update && apt-get -y install php5-mysql php5-gd php5-mcrypt php5-curl
 
 RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/* \
     && curl -o /usr/local/bin/n98-magerun $N98_MAGERUN_URL \
