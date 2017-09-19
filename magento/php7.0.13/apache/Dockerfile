@@ -20,6 +20,7 @@ RUN usermod -u 1000 www-data
 RUN a2enmod rewrite
 RUN sed -i -e 's/\/var\/www\/html/\/var\/www\/htdocs/' /etc/apache2/apache2.conf
 
+RUN mkdir -p /var/www/htdocs
 WORKDIR /var/www/htdocs
 
 COPY ./bin/set-base-url /usr/local/bin/set-base-url
