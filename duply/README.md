@@ -6,6 +6,6 @@ A duply container which can connect to OpenStack Swift storage
 
 Launch with
 ```bash
-docker run --rm occitech/duply -w http://mymagentosite.com/sitemap.xml
+docker run --rm occitech/duply
 ```
 More documentation on http://duply.net/
