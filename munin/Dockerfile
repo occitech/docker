@@ -1,0 +1,38 @@
+FROM ubuntu:18.04
+MAINTAINER occitech based on lrivallain (https://github.com/lrivallain) and Arcus ("http://arcus.io") work
+
+# install and configure munin
+RUN apt-get update -qq && RUNLEVEL=1 DEBIAN_FRONTEND=noninteractive \
+    apt-get install -y -qq cron munin munin-node nginx apache2 wget libapache2-mod-fcgid libcgi-fast-perl ssmtp mailutils curl tzdata
+RUN (cp /etc/munin/apache.conf /etc/apache2/sites-available/000-default.conf)
+RUN (sed -i 's/^Alias.*/Alias \/ \/var\/cache\/munin\/www\//g' /etc/apache2/sites-available/000-default.conf)
+RUN (sed -i 's/Allow from .*/Satisfy Any/g' /etc/apache2/sites-available/000-default.conf)
+RUN (sed -i 's/Order allow,deny.*/Allow from all/g' /etc/apache2/sites-available/000-default.conf)
+RUN (mkdir -p /var/run/munin && chown -R munin:munin /var/run/munin)
+
+RUN (chfn -f 'munin' root)
+RUN (/usr/sbin/a2enmod fcgid)
+RUN (mkdir -p /var/lib/munin/cgi-tmp)
+RUN (chown -R www-data:www-data /var/lib/munin/cgi-tmp)
+
+COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
+COPY logrotate-munin /etc/logrotate.d/munin
+COPY munin.conf /etc/munin/munin.conf
+COPY ssmtp.conf /etc/ssmtp/ssmtp.conf
+COPY munin_mail.conf /etc/munin/munin-conf.d/munin_mail.conf
+COPY slack_munin.sh /usr/local/bin/notify_slack_munin
+COPY munin_slack.conf /etc/munin/munin-conf.d/munin_slack.conf
+
+# copy launcher
+ADD run.sh /usr/local/bin/run
+RUN chmod +x /usr/local/bin/run
+
+# persist
+VOLUME /var/lib/munin
+VOLUME /var/log/munin
+VOLUME /var/cache/munin
+
+EXPOSE 80
+
+# launcher
+CMD ["/usr/local/bin/run"]
