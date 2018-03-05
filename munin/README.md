@@ -36,6 +36,7 @@ Munin stats aggregator and reporting, based on lrivallain (https://github.com/lr
 * `SLACKWEBHOOKURL`: URL of your Slack webhook (i.e. `https://hooks.slack.com/services/XXXXX/YYYYYYY/ZZZZZZZ`, needed for Slack alert)
 * `SLACKUSER`: Username of munin bot on your Slack
 * `SLACKICON`: Icon of munin bot on your Slack
+* `VIRTUAL_HOST`: FQDN of your munin website
 
 ## Persistent example
 	docker run \

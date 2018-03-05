@@ -18,7 +18,7 @@
 SLACK_CHANNEL="slackchannel"
 SLACK_WEBHOOK_URL="slackwebhookurl"
 SLACK_USERNAME="slackuser"
-SLACK_ICON_EMOJI=":slackicon:"
+SLACK_ICON_EMOJI="slackicon"
 
 # Url to link from slack notifications
 MUNIN_URL="http://muninurl/problems.html"

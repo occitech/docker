@@ -21,18 +21,18 @@ sed -i "s/^\[localhost\.localdomain\]/\[$SERVERNAME\]/g" /etc/apache2/sites-avai
 
 if [[ -n "$MAILCONTACT" && -n "$MAILSERVER" && -n "$MAILPORT" && -n "$MAILUSER" && -n "$MAILPASSWORD" && -n "$MAILDOMAIN" ]] ; then
   MAILCONTACT=${MAILCONTACT:="contact@domain.test"}
-  sed -i "s/^\[mailcontact]/\[$MAILCONTACT\]/g" /etc/ssmtp/ssmtp.conf
-  sed -i "s/^\[mailcontact]/\[$MAILCONTACT\]/g" /etc/munin/munin-conf.d/munin_mail.conf
+  sed -i "s/mailcontact/$MAILCONTACT/g" /etc/ssmtp/ssmtp.conf
+  sed -i "s/mailcontact/$MAILCONTACT/g" /etc/munin/munin-conf.d/munin_mail.conf
   MAILSERVER=${MAILSERVER:="mail.domain.test"}
-  sed -i "s/^\[mailserver]/\[$MAILSERVER\]/g" /etc/ssmtp/ssmtp.conf
+  sed -i "s/mailserver/$MAILSERVER/g" /etc/ssmtp/ssmtp.conf
   MAILPORT=${MAILPORT:="25"}
-  sed -i "s/^\[mailport]/\[$MAILPORT\]/g" /etc/ssmtp/ssmtp.conf
+  sed -i "s/mailport/$MAILPORT/g" /etc/ssmtp/ssmtp.conf
   MAILSERVER=${MAILUSER:="alert@domain.test"}
-  sed -i "s/^\[mailuser]/\[$MAILUSER\]/g" /etc/ssmtp/ssmtp.conf
-  MAILPASSWORD=${MAILPASSWORD:="alert@domain.test"}
-  sed -i "s/^\[mailpassword]/\[$MAILPASSWORD\]/g" /etc/ssmtp/ssmtp.conf
+  sed -i "s/mailuser/$MAILUSER/g" /etc/ssmtp/ssmtp.conf
+  MAILPASSWORD=${MAILPASSWORD:="XXXXXXXXX"}
+  sed -i "s/mailpassword/$MAILPASSWORD/g" /etc/ssmtp/ssmtp.conf
   MAILSERVER=${MAILDOMAIN:="domain.test"}
-  sed -i "s/^\[maildomain]/\[$MAILDOMAIN\]/g" /etc/ssmtp/ssmtp.conf
+  sed -i "s/maildomain/$MAILDOMAIN/g" /etc/ssmtp/ssmtp.conf
 else
   rm /etc/munin/munin-conf.d/munin_mail.conf /etc/ssmtp/ssmtp.conf
 fi
@@ -41,15 +41,15 @@ fi
 
 if [[ -n "$SLACKCHANNEL" && -n "$SLACKWEBHOOKURL" ]] ; then
   SLACKCHANNEL=${SLACKCHANNEL:="hosting"}
-  sed -i "s/^\[slackchannel]/\[$SLACKCHANNEL\]/g" /usr/local/bin/notify_slack_munin
+  sed -i "s/slackchannel/$SLACKCHANNEL/g" /usr/local/bin/notify_slack_munin
   SLACKWEBHOOKURL=${SLACKWEBHOOKURL:="https://hooks.slack.com/services/XXXXX/YYYYYYY/ZZZZZZZ"}
-  sed -i "s/^\[slackwebhookurl]/\[$SLACKWEBHOOKURL\]/g" /usr/local/bin/notify_slack_munin
+  sed -i "s,slackwebhookurl,$SLACKWEBHOOKURL,g" /usr/local/bin/notify_slack_munin
   SLACKUSER=${SLACKUSER:="munin"}
-  sed -i "s/^\[slackuser]/\[$SLACKUSER\]/g" /usr/local/bin/notify_slack_munin
-  SLACKICON=${SLACKICON:="hosting"}
-  sed -i "s/^\[slackicon]/\[$SLACKICON\]/g" /usr/local/bin/notify_slack_munin
-  sed -i "s/^\[muninurl]/\[$SERVERNAME\]/g" /usr/local/bin/notify_slack_munin
-  sed -i "s/^\[muninurl]/\[$SERVERNAME\]/g" /etc/munin/munin-conf.d/munin_slack.conf
+  sed -i "s/slackuser/$SLACKUSER/g" /usr/local/bin/notify_slack_munin
+  SLACKICON=${SLACKICON:=":bomb:"}
+  sed -i "s/slackicon/$SLACKICON/g" /usr/local/bin/notify_slack_munin
+  sed -i "s/muninurl/$VIRTUAL_HOST/g" /usr/local/bin/notify_slack_munin
+  sed -i "s/muninurl/$VIRTUAL_HOST/g" /etc/munin/munin-conf.d/munin_slack.conf
 else
   rm /etc/munin/munin-conf.d/munin_slack.conf
 fi
@@ -82,6 +82,11 @@ if [ ! -f /var/cache/munin/www/index.html ]; then
 EOF
     chown -R munin: /var/cache/munin/www/index.html
 fi
+
+# ensure munin fle have right permission
+
+chown -R munin:munin /var/lib/munin
+chmod -R ugo+rw /var/lib/munin/cgi-tmp
 
 # start cron
 /usr/sbin/cron &
