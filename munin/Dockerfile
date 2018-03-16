@@ -3,7 +3,7 @@ MAINTAINER occitech based on lrivallain (https://github.com/lrivallain) and Arcu
 
 # install and configure munin
 RUN apt-get update -qq && RUNLEVEL=1 DEBIAN_FRONTEND=noninteractive \
-    apt-get install -y -qq cron munin munin-node nginx apache2 wget libapache2-mod-fcgid libcgi-fast-perl ssmtp mailutils curl tzdata autoconf
+    apt-get install -y -qq cron munin nginx apache2 wget libapache2-mod-fcgid libcgi-fast-perl ssmtp mailutils curl tzdata autoconf
 RUN (cp /etc/munin/apache.conf /etc/apache2/sites-available/000-default.conf)
 RUN (sed -i 's/^Alias.*/Alias \/ \/var\/cache\/munin\/www\//g' /etc/apache2/sites-available/000-default.conf)
 RUN (sed -i 's/Allow from .*/Satisfy Any/g' /etc/apache2/sites-available/000-default.conf)
