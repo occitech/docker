@@ -24,9 +24,6 @@ COPY slack_munin.sh /usr/local/bin/notify_slack_munin
 RUN chmod +x /usr/local/bin/notify_slack_munin
 COPY munin_slack.conf /etc/munin/munin-conf.d/munin_slack.conf
 
-# remove useless cron generating error
-RUN rm /etc/cron.weekly/fstrim
-
 # copy launcher
 ADD run.sh /usr/local/bin/run
 RUN chmod +x /usr/local/bin/run
