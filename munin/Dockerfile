@@ -19,6 +19,7 @@ COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
 COPY logrotate-munin /etc/logrotate.d/munin
 COPY munin.conf /etc/munin/munin.conf
 COPY ssmtp.conf /etc/ssmtp/ssmtp.conf
+COPY revaliases /etc/ssmtp/revaliases
 COPY munin_mail.conf /etc/munin/munin-conf.d/munin_mail.conf
 COPY slack_munin.sh /usr/local/bin/notify_slack_munin
 RUN chmod +x /usr/local/bin/notify_slack_munin

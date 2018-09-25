@@ -25,10 +25,13 @@ if [[ -n "$MAILCONTACT" && -n "$MAILSERVER" && -n "$MAILPORT" && -n "$MAILUSER" 
   sed -i "s/mailcontact/$MAILCONTACT/g" /etc/munin/munin-conf.d/munin_mail.conf
   MAILSERVER=${MAILSERVER:="mail.domain.test"}
   sed -i "s/mailserver/$MAILSERVER/g" /etc/ssmtp/ssmtp.conf
+  sed -i "s/mailserver/$MAILSERVER/g" /etc/ssmtp/revaliases
   MAILPORT=${MAILPORT:="25"}
   sed -i "s/mailport/$MAILPORT/g" /etc/ssmtp/ssmtp.conf
+  sed -i "s/mailport/$MAILPORT/g" /etc/ssmtp/revaliases
   MAILSERVER=${MAILUSER:="alert@domain.test"}
   sed -i "s/mailuser/$MAILUSER/g" /etc/ssmtp/ssmtp.conf
+  sed -i "s/mailuser/$MAILUSER/g" /etc/ssmtp/revaliases
   MAILPASSWORD=${MAILPASSWORD:="XXXXXXXXX"}
   sed -i "s/mailpassword/$MAILPASSWORD/g" /etc/ssmtp/ssmtp.conf
   MAILSERVER=${MAILDOMAIN:="domain.test"}
