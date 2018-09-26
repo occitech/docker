@@ -17,6 +17,10 @@ sed -i "s/^\[localhost\.localdomain\]/\[$THISNODENAME\]/g" /etc/munin/munin.conf
 THISSERVERNAME=${SERVERNAME:="munin"}
 sed -i "s/^\[localhost\.localdomain\]/\[$SERVERNAME\]/g" /etc/apache2/sites-available/000-default.conf
 
+if [[ $DISABLELOCALNODE -eq "yes" ]] ; then
+  echo "includedir /etc/munin/munin-conf.d" > /etc/munin/munin.conf
+fi
+
 # configure mail notification
 
 if [[ -n "$MAILCONTACT" && -n "$MAILSERVER" && -n "$MAILPORT" && -n "$MAILUSER" && -n "$MAILPASSWORD" && -n "$MAILDOMAIN" ]] ; then

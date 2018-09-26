@@ -55,4 +55,4 @@ fi
 PAYLOAD="{\"channel\": \"${SLACK_CHANNEL}\", \"username\": \"${SLACK_USERNAME}\", \"attachments\": [{\"image_url\": \"${MUNIN_IMAGE}\", \"color\": \"${COLOR}\", \"fallback\": \"Munin alert - ${MUNIN_SERVICESTATE}: ${MUNIN_SERVICE} on ${MUNIN_HOST}\", \"pretext\": \"${ICON} Munin alert - ${MUNIN_SERVICESTATE}: ${MUNIN_SERVICE} on ${MUNIN_HOST} in ${MUNIN_GROUP} - <${MUNIN_URL}|View Munin>\", \"fields\": [{\"title\": \"Severity\", \"value\": \"${MUNIN_SERVICESTATE}\", \"short\": \"true\"}, {\"title\": \"Service\", \"value\": \"${MUNIN_SERVICE}\", \"short\": \"true\"}, {\"title\": \"Host\", \"value\": \"${MUNIN_HOST}\", \"short\": \"true\"}, {\"title\": \"Current Values\", \"value\": \"${input}\", \"short\": \"false\"}]}]}"
 
 #Send message to Slack
-curl -sX POST -o /dev/null --data "payload=${PAYLOAD}" $SLACK_WEBHOOK_URL 2>&1
+curl -sX POST -o /dev/null --data "payload=${PAYLOAD}" $SLACK_WEBHOOK_URL

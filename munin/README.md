@@ -27,6 +27,7 @@ Update base image (ubuntu 18.04) and munin (2.034) and add easily configurable m
 * `CRONDELAY`: Change the cron settings to update charts every X minutes (default: 2)
 * `TZ`: Customize the timezone according to your place: (i.e. `Europe/London`) (default: `Europe/Paris`)
 * `THISNODENAME`: Customize the displayed node name for localhost.localdomain (default: `munin`)
+* `DISABLELOCALNODE`: Disable local munin node (default: `no`)
 * `MAILCONTACT`: Recipient of the mail alert (i.e. `alert@example.test`, needed for mail alert)
 * `MAILSERVER`: Address of your mail server (i.e. `mail.example.test`, needed for mail alert)
 * `MAILPORT`: Port of your SMTP mail server  (i.e. `25`, needed for mail alert)
