@@ -1,5 +1,4 @@
 FROM php:7.2-apache
-MAINTAINER occitech <contact@occitech.fr>
 
 ENV N98_MAGERUN_URL https://files.magerun.net/n98-magerun.phar
 ENV COMPOSER_URL https://getcomposer.org/composer.phar

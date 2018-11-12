@@ -1,7 +1,5 @@
 FROM php:5.5-apache
 
-MAINTAINER occitech <contact@occitech.fr>
-
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update && apt-get -y install php5-mysql php5-mcrypt curl \

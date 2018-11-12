@@ -1,5 +1,4 @@
 FROM php:5.6-apache
-MAINTAINER occitech <contact@occitech.fr>
 
 RUN requirements="libmcrypt-dev g++ libicu-dev libmcrypt4 libicu52" \
     && apt-get update && apt-get install -y $requirements \

@@ -1,7 +1,5 @@
 FROM occitech/apache:2.2
 
-MAINTAINER occitech <contact@occitech.fr>
-
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN echo "deb http://archive.ubuntu.com/ubuntu precise universe main multiverse restricted" > /etc/apt/sources.list && echo "deb http://archive.ubuntu.com/ubuntu/ precise-security universe main multiverse restricted" >> /etc/apt/sources.list && apt-get update

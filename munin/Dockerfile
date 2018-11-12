@@ -1,5 +1,4 @@
 FROM ubuntu:18.04
-MAINTAINER occitech based on lrivallain (https://github.com/lrivallain) and Arcus ("http://arcus.io") work
 
 # install and configure munin
 RUN apt-get update -qq && RUNLEVEL=1 DEBIAN_FRONTEND=noninteractive \

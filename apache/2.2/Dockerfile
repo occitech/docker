@@ -1,6 +1,4 @@
-FROM ubuntu:precise
-
-MAINTAINER occitech <contact@occitech.fr>
+FROM ubuntu:bionic
 
 ENV DEBIAN_FRONTEND noninteractive
 

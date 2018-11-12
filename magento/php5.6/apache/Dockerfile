@@ -1,5 +1,4 @@
 FROM php:5.6-apache
-MAINTAINER occitech <contact@occitech.fr>
 
 ENV N98_MAGERUN_VERSION 1.102.0
 ENV N98_MAGERUN_URL https://files.magerun.net/n98-magerun.phar

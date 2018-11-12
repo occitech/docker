@@ -1,5 +1,4 @@
 FROM php:5.6-cli
-MAINTAINER Occitech <contact@occitech.fr>
 
 RUN docker-php-ext-install mbstring
 
