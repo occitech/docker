@@ -20,9 +20,7 @@ RUN apt-get update \
           docker-ce \
           dnsutils \
     && rm -rf /var/lib/apt/lists/* \
-    && echo 'jenkins ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers \
-    && rm -rf /var/lib/apt/lists/* \
-    && service docker start
+    && echo 'jenkins ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
 
 RUN usermod -a -G docker jenkins
 
