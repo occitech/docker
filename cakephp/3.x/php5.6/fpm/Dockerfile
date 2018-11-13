@@ -6,6 +6,7 @@ RUN requirements="libmcrypt-dev g++ libicu-dev" \
     && docker-php-ext-install mcrypt \
     && docker-php-ext-install mbstring \
     && docker-php-ext-install intl \
+    && docker-php-ext-install pcntl \
     && requirementsToRemove="g++" \
     && apt-get purge --auto-remove -y $requirementsToRemove
 
