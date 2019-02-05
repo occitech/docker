@@ -11,9 +11,7 @@ RUN apt-get install -y libxslt-dev
 RUN apt-get install -y mysql-client
 RUN apt-get install -y unzip
 RUN apt-get install -y zlib1g-dev
-RUN docker-php-ext-configure gd --with-jpeg-dir=/usr/lib --with-freetype-dir=/usr/lib/x86_64-linux-gnu
 RUN docker-php-ext-install calendar
-RUN docker-php-ext-install gd
 RUN docker-php-ext-install intl
 RUN docker-php-ext-install mbstring
 RUN docker-php-ext-install mcrypt
@@ -21,6 +19,8 @@ RUN docker-php-ext-install pdo_mysql
 RUN docker-php-ext-install soap
 RUN docker-php-ext-install xsl
 RUN docker-php-ext-install zip
+RUN docker-php-ext-configure gd --with-jpeg-dir=/usr/lib
+RUN docker-php-ext-install gd
 RUN rm -rf /var/lib/apt/lists/*
 RUN yes | pecl install xdebug
 RUN echo "zend_extension=$(find /usr/local/lib/php/extensions/ -name xdebug.so)" > /usr/local/etc/php/conf.d/xdebug.ini
