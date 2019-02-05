@@ -34,4 +34,5 @@ RUN chmod +x /usr/local/bin/n98-magerun2
 RUN chmod +x /usr/local/bin/mhsendmail
 RUN sed -i "s/\/var\/www\/html/\/var\/www\/pub/g" /etc/apache2/sites-enabled/000-default.conf
 RUN a2enmod rewrite
+COPY php.ini /usr/local/etc/php/
 WORKDIR /var/www
