@@ -1,4 +1,4 @@
-FROM debian:stretch
+FROM debian:buster
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -11,7 +11,7 @@ RUN apt-get install -y --no-install-recommends \
     python-swiftclient \
     sshfs \
     fuse \
-    mysql-client
+    default-mysql-client
 
 ENTRYPOINT ["/usr/bin/duply"]
 CMD ["usage"]
