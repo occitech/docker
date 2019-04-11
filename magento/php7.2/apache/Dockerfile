@@ -19,6 +19,9 @@ RUN curl -o /usr/local/bin/modman $MODMAN_URL \
 
 RUN apt-get update && apt-get install -y $REQUIREMENTS && rm -rf /var/lib/apt/lists/* \
     && docker-php-ext-install pdo_mysql \
+    && docker-php-ext-configure gd --with-gd --with-jpeg-dir \
+        --with-png-dir --with-zlib-dir --with-freetype-dir \
+        --enable-gd-native-ttf \
     && docker-php-ext-install gd \
     && docker-php-ext-install soap \
     && docker-php-ext-install zip \
