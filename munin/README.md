@@ -24,7 +24,7 @@ Update base image (ubuntu 18.04) and munin (2.034) and add easily configurable m
 
 ### Environment Variables
 * `NODES`: Space separated list of `<name>:<host>` munin node pairs. (i.e. `foo.local:127.0.0.1 bar.remote:1.2.3.4`)
-* `CRONDELAY`: Change the cron settings to update charts every X minutes (default: 2)
+* `CRONDELAY`: Change the cron settings to update charts every X minutes (default: 5)
 * `TZ`: Customize the timezone according to your place: (i.e. `Europe/London`) (default: `Europe/Paris`)
 * `THISNODENAME`: Customize the displayed node name for localhost.localdomain (default: `munin`)
 * `DISABLELOCALNODE`: Disable local munin node (default: `no`)
