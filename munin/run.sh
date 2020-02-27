@@ -40,6 +40,7 @@ if [[ -n "$MAILCONTACT" && -n "$MAILSERVER" && -n "$MAILPORT" && -n "$MAILUSER" 
   sed -i "s/mailpassword/$MAILPASSWORD/g" /etc/ssmtp/ssmtp.conf
   MAILDOMAIN=${MAILDOMAIN:="domain.test"}
   sed -i "s/maildomain/$MAILDOMAIN/g" /etc/ssmtp/ssmtp.conf
+  sed -i "s/mailhost/$MAILDOMAIN/g" /etc/ssmtp/ssmtp.conf
 else
   rm /etc/munin/munin-conf.d/munin_mail.conf /etc/ssmtp/ssmtp.conf
 fi
