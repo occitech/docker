@@ -31,8 +31,10 @@ Update base image (ubuntu 18.04) and munin (2.034) and add easily configurable m
 * `MAILCONTACT`: Recipient of the mail alert (i.e. `alert@example.test`, needed for mail alert)
 * `MAILSERVER`: Address of your mail server (i.e. `mail.example.test`, needed for mail alert)
 * `MAILPORT`: Port of your SMTP mail server  (i.e. `25`, needed for mail alert)
-* `MAILUSER`: User of your mail server  (i.e. `user@example.test`, needed for mail alert)
+* `MAILUSER`: User to Auth on your mail server  (i.e. `user@example.test`, needed for mail alert)
 * `MAILPASSWORD`: Password of your mail server (needed for mail alert)
+* `MAILFROM`: Where the mail seems to come from (i.e. `munin@example.test`, needed for mail alert)
+* `MAILNAME`: Friendly sender name displayed for recipiend
 * `MAILDOMAIN`: Domain of your mail server (i.e. `example.test`, needed for mail alert)
 * `SLACKCHANNEL`: Name of your Slack channel (i.e. `hosting`, needed for Slack alert)
 * `SLACKWEBHOOKURL`: URL of your Slack webhook (i.e. `https://hooks.slack.com/services/XXXXX/YYYYYYY/ZZZZZZZ`, needed for Slack alert)

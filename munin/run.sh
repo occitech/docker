@@ -33,14 +33,17 @@ if [[ -n "$MAILCONTACT" && -n "$MAILSERVER" && -n "$MAILPORT" && -n "$MAILUSER" 
   MAILPORT=${MAILPORT:="25"}
   sed -i "s/mailport/$MAILPORT/g" /etc/ssmtp/ssmtp.conf
   sed -i "s/mailport/$MAILPORT/g" /etc/ssmtp/revaliases
-  MAILSERVER=${MAILUSER:="alert@domain.test"}
+  MAILUSER=${MAILUSER:="alert@domain.test"}
   sed -i "s/mailuser/$MAILUSER/g" /etc/ssmtp/ssmtp.conf
-  sed -i "s/mailuser/$MAILUSER/g" /etc/ssmtp/revaliases
+  MAILFROM=${MAILFROM:="munin@domain.test"}
+  sed -i "s/mailfrom/$MAILFROM/g" /etc/ssmtp/revaliases
   MAILPASSWORD=${MAILPASSWORD:="XXXXXXXXX"}
   sed -i "s/mailpassword/$MAILPASSWORD/g" /etc/ssmtp/ssmtp.conf
   MAILDOMAIN=${MAILDOMAIN:="domain.test"}
   sed -i "s/maildomain/$MAILDOMAIN/g" /etc/ssmtp/ssmtp.conf
   sed -i "s/mailhost/$MAILDOMAIN/g" /etc/ssmtp/ssmtp.conf
+  MAILNAME=${MAILNAME:="Munin"}
+  sed -i "s/munin application user/$MAILNAME/g" /etc/passwd
 else
   rm /etc/munin/munin-conf.d/munin_mail.conf /etc/ssmtp/ssmtp.conf
 fi
