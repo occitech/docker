@@ -1,28 +1,39 @@
 # Munin (master)
 
 ## Quickstart
-Munin stats aggregator and reporting, based on lrivallain (https://github.com/lrivallain) and Arcus ("http://arcus.io") work.
-Update base image (ubuntu 18.04) and munin (2.034) and add easily configurable mail and Slack notifications.
+
+Munin stats aggregator and reporting, based on lrivallain (<https://github.com/lrivallain)> and Arcus (<http://arcus.io)> work.
+Update base image (ubuntu 20.04) and munin (2.0.56) and add easily configurable mail and Slack notifications.
 
 ### Build
-	git clone https://github.com/occitech/docker.git
-	docker build -t munin ./munin
-	docker run -p 80 munin
+
+```bash
+git clone https://github.com/occitech/docker.git
+docker build -t munin ./munin
+docker run -p 80 munin
+```
 
 ### Or pull
-	docker pull occitech/munin
-	docker run -p 80 occitech/munin:latest
+
+```bash
+docker pull occitech/munin
+docker run -p 80 occitech/munin:latest
+```
 
 ## How it works
+
 ### Ports
+
 * 80
 
 ### Volumes
+
 * `/var/lib/munin` : Databases files
 * `/var/log/munin` : Logs
 * `/var/cache/munin` : Where are generated graphs
 
 ### Environment Variables
+
 * `NODES`: Space separated list of `<name>:<host>` munin node pairs. (i.e. `foo.local:127.0.0.1 bar.remote:1.2.3.4`)
 * `CRONDELAY`: Change the cron settings to update charts every X minutes (default: 5)
 * `TZ`: Customize the timezone according to your place: (i.e. `Europe/London`) (default: `Europe/Paris`)
@@ -43,15 +54,18 @@ Update base image (ubuntu 18.04) and munin (2.034) and add easily configurable m
 * `VIRTUAL_HOST`: FQDN of your munin website
 
 ## Persistent example
-	docker run \
-	 -d \
-	 --name=munin \
-	 -p 127.0.0.1:8080:80 \
-	 -e THISNODENAME="munin.example.com" \
-	 -e TZ="Europe/London" \
-	 -e CRONDELAY=2 \
-	 -e NODES="anothernode.example.com:1.2.3.4 anothernode2.example.com:5.6.7.8" \
-	 -v /data/munin/db:/var/lib/munin \
-	 -v /data/munin/logs:/var/log/munin \
-	 -v /data/munin/cache:/var/cache/munin \
-	 munin
+
+```bash
+docker run \
+ -d \
+ --name=munin \
+ -p 127.0.0.1:8080:80 \
+ -e THISNODENAME="munin.example.com" \
+ -e TZ="Europe/London" \
+ -e CRONDELAY=2 \
+ -e NODES="anothernode.example.com:1.2.3.4 anothernode2.example.com:5.6.7.8" \
+ -v /data/munin/db:/var/lib/munin \
+ -v /data/munin/logs:/var/log/munin \
+ -v /data/munin/cache:/var/cache/munin \
+ munin
+```
