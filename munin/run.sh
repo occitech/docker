@@ -3,6 +3,8 @@
 # timezone settings
 TZ=${TZ:="Europe/Paris"}
 echo $TZ > /etc/timezone
+# workaround https://bugs.launchpad.net/ubuntu/+source/tzdata/+bug/1554806
+rm /etc/localtime
 dpkg-reconfigure -f noninteractive tzdata
 
 # change cron setting for updates
