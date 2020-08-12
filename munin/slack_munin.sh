@@ -41,7 +41,7 @@ then
 elif [ "$MUNIN_SERVICESTATE" = "OK" ]
 then
     ICON=":exclamation:"
-    COLOR="danger"
+    COLOR="good"
 elif [ "$MUNIN_SERVICESTATE" = "UNKNOWN" ]
 then
     ICON=":question:"
