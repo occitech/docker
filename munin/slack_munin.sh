@@ -40,7 +40,7 @@ then
     COLOR="good"
 elif [ "$MUNIN_SERVICESTATE" = "OK" ]
 then
-    ICON=":exclamation:"
+    ICON=":white_check_mark:"
     COLOR="good"
 elif [ "$MUNIN_SERVICESTATE" = "UNKNOWN" ]
 then
