@@ -5,7 +5,6 @@ USER root
 RUN apt-get update \
     && apt-get install -y \
           sudo \
-          lsb-core \
           software-properties-common \
           apt-transport-https \
           apt-transport-https \
@@ -24,7 +23,7 @@ RUN apt-get update \
 
 RUN usermod -a -G docker jenkins
 
-RUN curl -L https://github.com/docker/compose/releases/download/1.26.2/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose \
+RUN curl -L https://github.com/docker/compose/releases/download/1.28.2/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose \
     && chmod +x /usr/local/bin/docker-compose
 
 USER jenkins
