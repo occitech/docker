@@ -11,8 +11,6 @@ RUN (mkdir -p /var/run/munin && chown -R munin:munin /var/run/munin)
 
 RUN (chfn -f 'munin' root)
 RUN (/usr/sbin/a2enmod fcgid)
-RUN (mkdir -p /var/lib/munin/cgi-tmp)
-RUN (chown -R www-data:www-data /var/lib/munin/cgi-tmp)
 
 COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
 COPY logrotate-munin /etc/logrotate.d/munin

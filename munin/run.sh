@@ -15,6 +15,10 @@ sed -i "s/\*\/5/\*\/$CRONDELAY/g" /etc/cron.d/munin
 THISNODENAME=${THISNODENAME:="munin"}
 sed -i "s/^\[localhost\.localdomain\]/\[$THISNODENAME\]/g" /etc/munin/munin.conf
 
+# configure default node IP
+THISNODEIP=${THISNODEIP:="127.0.0.1"}
+sed -i "s/^\[127\.0\.0\.1]/\[$THISNODEIP\]/g" /etc/munin/munin.conf
+
 # configure default servername
 THISSERVERNAME=${SERVERNAME:="munin"}
 sed -i "s/^\[localhost\.localdomain\]/\[$SERVERNAME\]/g" /etc/apache2/sites-available/000-default.conf
@@ -96,9 +100,10 @@ EOF
     chown -R munin: /var/cache/munin/www/index.html
 fi
 
-# ensure munin fle have right permission
+# ensure munin folder exist and have right permission
 
-chown -R munin:munin /var/lib/munin
+mkdir -p /var/lib/munin/cgi-tmp /var/cache/munin/www
+chown -R munin:munin /var/lib/munin  /var/cache/munin
 chmod -R ugo+rw /var/lib/munin/cgi-tmp
 
 # start cron
