@@ -2,7 +2,7 @@
 
 ## Quickstart
 
-Munin stats aggregator and reporting, based on lrivallain (<https://github.com/lrivallain)> and Arcus (<http://arcus.io)> work.
+Munin stats aggregator and reporting, based on lrivallain (<https://github.com/lrivallain>) and Arcus (<http://arcus.io>) work.
 Update base image (ubuntu 20.04) and munin (2.0.56) and add easily configurable mail and Slack notifications.
 
 ### Build
