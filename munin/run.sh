@@ -102,8 +102,8 @@ fi
 
 # ensure munin folder exist and have right permission
 
-mkdir -p /var/lib/munin/cgi-tmp /var/cache/munin/www
-chown -R munin:munin /var/lib/munin  /var/cache/munin
+mkdir -p /var/lib/munin/cgi-tmp /var/cache/munin/www /var/log/munin
+chown -R munin:munin /var/lib/munin /var/cache/munin /var/log/munin
 chmod -R ugo+rw /var/lib/munin/cgi-tmp
 
 # start cron
