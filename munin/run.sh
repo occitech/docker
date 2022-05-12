@@ -17,7 +17,7 @@ sed -i "s/^\[localhost\.localdomain\]/\[$THISNODENAME\]/g" /etc/munin/munin.conf
 
 # configure default node IP
 THISNODEIP=${THISNODEIP:="127.0.0.1"}
-sed -i "s/^\[127\.0\.0\.1]/\[$THISNODEIP\]/g" /etc/munin/munin.conf
+sed -i "s/^\( *address\) 127\.0\.0\.1\$/\1 $THISNODEIP/" /etc/munin/munin.conf
 
 # configure default servername
 THISSERVERNAME=${SERVERNAME:="munin"}
