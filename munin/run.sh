@@ -85,6 +85,12 @@ do
 EOF
 done
 
+# ensure munin folder exist and have right permission
+
+mkdir -p /var/lib/munin/cgi-tmp /var/cache/munin/www
+chown -R munin:munin /var/lib/munin  /var/cache/munin
+chmod -R ugo+rw /var/lib/munin/cgi-tmp
+
 # placeholder html to prevent permission error
 if [ ! -f /var/cache/munin/www/index.html ]; then
     cat << EOF > /var/cache/munin/www/index.html
@@ -99,12 +105,6 @@ if [ ! -f /var/cache/munin/www/index.html ]; then
 EOF
     chown -R munin: /var/cache/munin/www/index.html
 fi
-
-# ensure munin folder exist and have right permission
-
-mkdir -p /var/lib/munin/cgi-tmp /var/cache/munin/www
-chown -R munin:munin /var/lib/munin  /var/cache/munin
-chmod -R ugo+rw /var/lib/munin/cgi-tmp
 
 # start cron
 /usr/sbin/cron &
