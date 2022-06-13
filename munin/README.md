@@ -1,5 +1,7 @@
 # Munin (master)
 
+**UNMAINTAINED** This repository is not maintained anymore, please use <https://github.com/ethersys/ethersys-docker-munin> and report issues on it.
+
 ## Quickstart
 
 Munin stats aggregator and reporting, based on lrivallain (<https://github.com/lrivallain>) and Arcus (<http://arcus.io>) work.
